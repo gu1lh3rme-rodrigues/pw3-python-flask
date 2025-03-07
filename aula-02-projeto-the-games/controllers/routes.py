@@ -3,6 +3,13 @@
 from flask import render_template, request
 
 jogadores = ['Black.Buterfly', 'Enderboy_404']
+
+# array de objetosW
+gamelist = [{'Título': 'CS-GO',
+             'Ano': 2012,
+             'Categoria': 'FPS Online'}]
+
+
 def init_app(app):
     @app.route('/')
     # Criando Função no Python
@@ -14,10 +21,8 @@ def init_app(app):
     @app.route('/games', methods=['GET', 'POST'])
     # View function - Função de visualização
     def games():
-        # dicionário no python (objeto)
-        game = {'Titulo': 'CS-GO',
-                'Ano': 2012,
-                'Categoria': 'FPS Online'}
+        # acessando o 1° jogo da lista de jogos
+        game = gamelist[0]
 
         if request.method == 'POST':
             if request.form.get('jogador'):  # nome do input
@@ -29,3 +34,15 @@ def init_app(app):
                                game=game,
                                jogadores=jogadores,
                                jogos=jogos)
+
+    @app.route('/cadgames', methods=['GET', 'POST'])
+    def cadgames():
+
+        if request.method == 'POST':
+            if request.form.get('titulo') and request.form.get('ano') and request.form.get('categoria'):
+                gamelist.append({'Título': request.form.get('titulo'),
+                                 'Ano': request.form.get('ano'),
+                                 'Categoria': request.form.get('categoria')})
+
+        return render_template('cadgames.html',
+                               gamelist=gamelist)
