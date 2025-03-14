@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os Consoles</title>
+</head>
+<body>
+    <h1>Bem vindo a pagína dos consoles</h1>
+    <hr>
+
+    <!-- Info do console -->
+    {%for chave, valor in consoles.items()%}
+    <details>
+        <summary>{{chave}}</summary>
+        <p>{{valor}}</p>
+        <br>
+    </details>
+    {{%endfor%}}
+    <p>O console {{console['Nome']}} custa R${{[Preço]}}. </p>
+    <hr>
+
+    <!-- Exibição dos outros consoles-->
+     <hr> 
+     <br><br>
+     <p>Outros consoles também pesquisados:</p>
+
+     <ul>
+        {%for consoles in consoles: %}
+        <li>
+            {{Consoles}}
+        </li>
+        {%endfor%}
+     </ul>
+     <hr>
+     <h1>Retornar para a página inicial?</h1>
+     <a href="/">Voltar</a>    
+</body>
+</html>
