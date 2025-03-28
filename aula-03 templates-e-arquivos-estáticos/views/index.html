@@ -1,12 +1,17 @@
-   {% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>Bem vindo ao The Games!</h1>
+<hr />
+<a href="/games">IR para a página de Jogos</a>
+<hr />
+<a href="/cadgames">Cadastrar os jogos</a>
+<hr />
+<a href="/consoles.html">Acessar os Consoles</a>
+<hr />
+<a href="/cadconsoles.html">Cadadstrar um console?</a>
 
-   {% block content %}
-   <h1>Bem vindo ao The Games!</h1>    
-    <hr>
-    <a href="/games">IR para a página de Jogos</a>
-    <hr>
-    <a href="/cadgames">Cadastrar os jogos</a>
-    <hr>
-
-    <img src="{{url_for('static', filename='images/Main.jpg')}}" alt="The Games" width="600px"> 
-     {% endblock content %}
+<img
+  src="{{url_for('static', filename='images/Main.jpg')}}"
+  alt="The Games"
+  width="600px"
+/>
+{% endblock content %}

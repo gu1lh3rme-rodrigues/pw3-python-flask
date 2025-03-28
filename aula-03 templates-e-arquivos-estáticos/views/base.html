@@ -27,18 +27,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            <!-- Home -->
             <li class="nav-item active">
               <a class="nav-link" href="{{url_for('home')}}">Home</a>
             </li>
+            <!-- games  -->
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('games')}}">Games</a>
             </li>
+            <!-- cadgames -->
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('cadgames')}}">Cadastrar Games </a>
             </li>
+            <!-- console -->
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Cadastrar Consoles</a>
-            </li>
+                <a class="nav-link" href="{{url_for('consoles')}}">Consoles</a>
+              </li>
+              <!-- cadconsoles -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('cadconsoles')}}">Cadastrar Consoles </a>
+              </li>
           </ul>
         </div>
       </nav>

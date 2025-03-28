@@ -9,6 +9,12 @@ gamelist = [{'Título': 'CS-GO',
              'Ano': 2012,
              'Categoria': 'FPS Online'}]
 
+Consoles = ['Nintendo', 'Xbox', 'Gameboy']
+
+consolelist= [{'Nome': 'Xbox',
+               'Preço': '10000', 
+               'País': 'EUA'}]
+
 
 def init_app(app):
     @app.route('/')
@@ -17,7 +23,7 @@ def init_app(app):
         return render_template('index.html')
 
     # atividade do dia
-
+# games
     @app.route('/games', methods=['GET', 'POST'])
     # View function - Função de visualização
     def games():
@@ -35,6 +41,8 @@ def init_app(app):
                                jogadores=jogadores,
                                jogos=jogos)
 
+    # cadgames
+
     @app.route('/cadgames', methods=['GET', 'POST'])
     def cadgames():
 
@@ -46,3 +54,28 @@ def init_app(app):
 
         return render_template('cadgames.html',
                                gamelist=gamelist)
+
+# consoles
+
+
+    @app.route('/consoles', methods=['GET', 'POST'])
+    def consoles():
+
+        consoles = consolelist[0]
+
+    if request.method == 'POST':
+        if request.form.get('Consoles'):
+         consoles.append(request.form.get('Consoles'))
+
+# cadconsoles
+    @app.route('/cadconsoles', methods=['GET', 'POST'])
+    def cadconsoles():
+
+                if request.method == 'POST':
+                    if request.form.get('nome') and request.form.get('preço') and request.form.get('país'):
+                        consolelist.append({'Nome': request.form.get('Nome'),
+                                            'Preço': request.form.get('Preço'),
+                                            'País': request.form.get('País')})
+
+                        return render_template('cadconsole.html',
+                                               consolelist=consolelist)
