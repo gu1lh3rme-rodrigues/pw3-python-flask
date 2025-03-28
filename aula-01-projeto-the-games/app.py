@@ -19,19 +19,19 @@ def home():
 @app.route('/games')
 # View function - Função de visualização
 def games():
-    titulo = 'Portal'
-    ano = 2007
-    categoria = 'Puzzle, Singleplayer'
+    # dicionário no python (objeto)
+    game = {'Titulo': 'CS-GO',
+            'Ano': 2012,
+            'Categoria': 'FPS Online'}
     jogadores = ['Black.Buterfly', 'Enderboy_404']
-    jogos = ['Portal 2', 'Team Fortess 2', 'CS-GO', 'Half-Life', 'Dota', 'Day of Defeat:Source', 'Left 4 Dead']
+    jogos = ['Portal 2', 'Team Fortess 2', 'CS-GO', 'Half-Life',
+             'Dota', 'Day of Defeat:Source', 'Left 4 Dead']
     return render_template('games.html',
-                           titulo = titulo,
-                           ano = ano,
-                           categoria = categoria,
-                           jogadores = jogadores,
-                           jogos = jogos)
+                          game = game, 
+                           jogos=jogos)
 
 
 if __name__ == '__main__':
     # Rodando o Servidor do Localhost, na porta 5000
     app.run(host='localhost', port=5000, debug=True)
+

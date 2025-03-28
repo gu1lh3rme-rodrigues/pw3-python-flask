@@ -9,15 +9,15 @@
     <h1>Bem vindo a página de games!</h1>
     <hr />
 
-    <p>Jogos da Valve:</p>
-    {#Exemplo de comentário do JINJA2#}
-    <ul>
-      <li>{{titulo}}</li>
-      <li>{{ano}}</li>
-      <li>{{categoria}}</li>
-    </ul>
+    <!-- Percorrendo o dicionário com for -->
+    {% for chave, valor in game.items()%} 
+    <details>
+      <summary> {{chave}} </summary> 
+      <p>{{valor}} </p> <br />
+  </details>
+    {%endfor%}
 
-    <p>O jogo {{titulo}} tem {{2025 - ano}} anos.</p>
+    <p>O jogo {{game['Titulo']}} tem {{2025 - game['Ano']}} anos.</p>
     <hr />
 
     <p>Estão jogando no momento:</p>
@@ -30,13 +30,13 @@
     <!-- Criar uma seção para exibir uma lista de outros jogos sendo jogados no momento. A lista deve possuir 7 games e ser não ordenada -->
     <hr />
     <br /><br />
-    <p>Outros jogos sendo jogados no momento: </p>
+    <p>Outros jogos sendo jogados no momento:</p>
     <ul>
-        {% for jogos in jogos: %}
-        <li>{{jogos}}</li>
-        {% endfor %}
+      {% for jogos in jogos: %}
+      <li>{{jogos}}</li>
+      {% endfor %}
     </ul>
-    <hr>
+    <hr />
     <h1>Retornar para a página inicial?</h1>
     <a href="/">IR para a página de Jogos</a>
   </body>
