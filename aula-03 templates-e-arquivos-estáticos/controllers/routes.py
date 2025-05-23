@@ -11,9 +11,9 @@ gamelist = [{'Título': 'CS-GO',
 
 Consoles = ['Nintendo', 'Xbox', 'Gameboy']
 
-consolelist= [{'Nome': 'Xbox',
-               'Preço': '10000', 
-               'País': 'EUA'}]
+consolelist = [{'Nome': 'Xbox',
+               'Preço': '10000',
+                'País': 'EUA'}]
 
 
 def init_app(app):
@@ -56,26 +56,24 @@ def init_app(app):
                                gamelist=gamelist)
 
 # consoles
-
-
     @app.route('/consoles', methods=['GET', 'POST'])
+    # View function - Função de visualização
     def consoles():
+        # acessando o 1° jogo da lista de jogos
+        console = consolelist[0]
 
-        consoles = consolelist[0]
-
-    if request.method == 'POST':
-        if request.form.get('Consoles'):
-         consoles.append(request.form.get('Consoles'))
-
+        if request.method == 'POST':
+            if request.form.get('console'):  # nome do input
+                jogadores.append(request.form.get('console'))
 # cadconsoles
     @app.route('/cadconsoles', methods=['GET', 'POST'])
     def cadconsoles():
 
-                if request.method == 'POST':
-                    if request.form.get('nome') and request.form.get('preço') and request.form.get('país'):
-                        consolelist.append({'Nome': request.form.get('Nome'),
-                                            'Preço': request.form.get('Preço'),
-                                            'País': request.form.get('País')})
+        if request.method == 'POST':
+            if request.form.get('nome') and request.form.get('preço') and request.form.get('país'):
+                consolelist.append({'Nome': request.form.get('Nome'),
+                                    'Preço': request.form.get('Preço'),
+                                    'País': request.form.get('País')})
 
-                        return render_template('cadconsole.html',
-                                               consolelist=consolelist)
+                return render_template('cadconsole.html',
+                                       consolelist=consolelist)

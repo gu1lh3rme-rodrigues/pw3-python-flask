@@ -1,48 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<h1>Bem vindo a página de games!</h1>
+<hr />
 
-    <h1>Bem vindo a página de games!</h1>
-    <hr />
+<!-- Percorrendo o dicionário com for -->
+{% for chave, valor in game.items()%}
+<details>
+  <summary>{{chave}}</summary>
+  <p>{{valor}}</p>
+  <br />
+</details>
+{%endfor%}
 
-    <!-- Percorrendo o dicionário com for -->
-    {% for chave, valor in game.items()%}
-    <details>
-      <summary>{{chave}}</summary>
-      <p>{{valor}}</p>
-      <br />
-    </details>
-    {%endfor%}
+<p>O jogo {{game['Titulo']}} tem {{2025 - game['Ano']}} anos.</p>
+<hr />
 
-    <p>O jogo {{game['Titulo']}} tem {{2025 - game['Ano']}} anos.</p>
-    <hr />
+<p>Estão jogando no momento:</p>
+<ol>
+  {% for jogador in jogadores: %}
+  <li>{{jogador}}</li>
+  {% endfor %}
+</ol>
+<hr />
+<h4>Entrar em jogo:</h4>
+<form action="{{url_for('games')}}" , method="POST">
+  <label for="jogador">Jogador</label>
+  <input type="text" name="jogador" />
+  <input type="submit" value="Entrar" />
+</form>
 
-    <p>Estão jogando no momento:</p>
-    <ol>
-      {% for jogador in jogadores: %}
-      <li>{{jogador}}</li>
-      {% endfor %}
-    </ol>
-    <hr />
-    <h4>Entrar em jogo:</h4>
-    <form action="{{url_for('games')}}", method="POST">
-      <label for="jogador">Jogador</label>
-      <input type="text" name="jogador" />
-      <input type="submit" value="Entrar" />
-    </form>
-    
-    <hr />
-    <!-- Criar uma seção para exibir uma lista de outros jogos sendo jogados no momento. A lista deve possuir 7 games e ser não ordenada -->
-    <hr />
-    <br /><br />
-    <p>Outros jogos sendo jogados no momento:</p>
-    <ul>
-      {% for jogos in jogos: %}
-      <li>{{jogos}}</li>
-      {% endfor %}
-    </ul>
-    <hr />
-    <h1>Retornar para a página inicial?</h1>
-    <a href="/">IR para a página de Jogos</a>
+<hr />
+<!-- Criar uma seção para exibir uma lista de outros jogos sendo jogados no momento. A lista deve possuir 7 games e ser não ordenada -->
+<hr />
+<br /><br />
+<p>Outros jogos sendo jogados no momento:</p>
+<ul>
+  {% for jogos in jogos: %}
+  <li>{{jogos}}</li>
+  {% endfor %}
+</ul>
+<hr />
+<h1>Retornar para a página inicial?</h1>
+<a href="/">IR para a página de Jogos</a>
 
-    {% endblock content %}
+{% endblock content %}
