@@ -69,10 +69,19 @@
       <td>{{game.categoria}}</td>
       <td>{{game.plataforma}}</td>
       <td>{{game.preco}}</td>
-      <td><button class="btn btn-warning">Editar</button></td>
+      <td>
+        <a
+          style="text-decoration: none; color: orange"
+          href="{{url_for('edit', id=game.id)}}"
+          >Editar</a
+        >
+      </td>
 
       <td>
-        <a href="{{url_for('estoque', id=game.id)}}" onclick="return confirm ('Desejan realmente Excluir o jogo {{game.titulo}}?')"><button class="btn btn-danger">Excluir</button></a
+        <a
+          href="{{url_for('estoque', id=game.id)}}"
+          onclick="return confirm ('Desejan realmente Excluir o jogo {{game.titulo}}?')"
+          ><button class="btn btn-danger">Excluir</button></a
         >
       </td>
     </tr>

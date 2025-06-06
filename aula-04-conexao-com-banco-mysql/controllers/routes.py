@@ -72,3 +72,17 @@ def init_app(app):
         #O método query.all = SELECT *FROM...
         gamesEmEstoque = Game.query.all()
         return render_template ('estoque.html', gamesEmEstoque = gamesEmEstoque)
+    
+    @app.route('/edit/<int:id>', methods=['GET', 'POST'])
+    def edit(id):
+        g = Game.query.get(id)
+        #edita o jogo com as informações do formulario
+        if request.method == 'POST':
+            g.titulo = request.form['titulo']
+            g.ano = request.form['ano']
+            g.categoria = request.form['categoria']
+            g.plataforma = request.form['plataforma']
+            g.form = request.form['preco']
+            db.session.commit()
+            return redirect(url_for('estoque'))
+        return render_template('editgame.html', g=g)
