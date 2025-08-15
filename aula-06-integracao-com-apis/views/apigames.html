@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content%}
-    <div class="container" style="background-color: #f0f0f0; border-radius: 8px">
+    <div class="container" style="background-color: #7e0000; border-radius: 8px">
         <div class="row">
          {% for game in gamelist %}
          <div class="col-md-3 m-auto">
@@ -8,7 +8,10 @@
              <div class="card-body">
                 <h5>{{game.title}}</h5>
                 <p>{{game.genre}}</p>
+                <p>{{game.short_description}}</p>
                 <p>{{game.platform}}</p>
+                <p>{{game.publisher}}</p>
+                <p>{{game.released_date}}</p>
                 <a href="{{url_for('apigames', id=game.id)}}" class="btn btn-dark">+ Info</a>
              </div>
             </div>
