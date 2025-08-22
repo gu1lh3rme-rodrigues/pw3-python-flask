@@ -2,6 +2,16 @@
     margin: 5px;
 }
 
+btn {
+    text-align: center;
+
+}
 a {
     text-decoration: none;
+}
+
+img {
+  display: block;
+  margin: auto;
+  width: 20%; 
 }

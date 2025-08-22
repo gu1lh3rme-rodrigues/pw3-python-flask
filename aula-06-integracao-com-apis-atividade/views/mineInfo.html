@@ -1,4 +1,12 @@
-<img src="{{MineInfo.thumbnail}}">
-{{mine.name}}<br>
-{{mine.stacksize}}<br>
-{{mine.description}}<br>
+<div class="card" style="width: 250px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 16px; font-family: Arial, sans-serif; text-align: center; background-color: #ffffff;">
+    <img src="{{mineInfo.image}}" alt="Imagem do cartão" style="width: 100%;  object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+    <div class="card-body">
+        <h3 style="font-size: 20px; font-weight: bold; margin: 0 0 8px;">{{mineInfo.name}}</h3>
+        <p style="font-size: 13px; color: #9b2222; line-height: 1.4;">{{mineInfo.description}}</p>
+    </div>
+</div>
+
+
+<li class="nav-item active">
+              <a class="nav-link" href="{{url_for('api')}}">Voltar</a>
+            </li>

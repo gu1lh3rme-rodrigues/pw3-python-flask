@@ -4,18 +4,22 @@ import json
 
 
 def init_app(app):
+    @app.route('/', methods=['GET', 'POST'])
+    def home():
+        return render_template("index.html")
+    
     @app.route('/api', methods=['GET', 'POST'])
-    @app.route('/api/<int:id>', methods=['GET', 'POST'])
+    @app.route('/api/<id>', methods=['GET', 'POST'])
     def api(id=None):
         url = 'https://minecraft-api.vercel.app/api/items'
-        response = urllib.request.urlopen(url)
+        response = urllib.request.urlopen(url   )
         apiData = response.read()
         mineInfolist = json.loads(apiData)
        # Se id existir
         if id:
             mineInfoInfo = []
             for mineInfo in mineInfolist:
-                if mineInfo['id'] == id:
+                if mineInfo['namespacedId'] == id:
                     mineInfoInfo = mineInfo
                     break
 

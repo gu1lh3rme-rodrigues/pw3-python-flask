@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Bem-vindo ao Minecraft WikiBlocks!</h1>
-<hr>
-<!-- Importando a imagem -->
-<img src="{{url_for('static', filename='imgs/Block.jpg')}}" alt="The Games" width="800px">
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="mb-4">Mine Block wiki</h1>
+                <p class="lead mb-4">
+                    Blocos
+                </p>
+                <img src="{{url_for('static', filename='imgs/block.jpg')}}" alt="Minecraft" class="img-fluid mb-4" style="max-height: 200px;">
+                <br>
+                <a class="btn btn-primary" href="{{url_for('api')}}" role="button">
+                    WikiBlock
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}

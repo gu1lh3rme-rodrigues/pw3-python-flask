@@ -3,13 +3,16 @@
         <div class="row">
          {% for mine in mineInfolist %}
          <div class="col-md-3 m-auto">
-             <div class="card" style="width: 14rem">
-             <img src="{{mine.image}}" />
+             <div class="card" img="center" style="width: auto" >
+             <img src="{{mine.image}}" width="90vw"/>
              <div class="card-body">
-                <h5>{{mine.name}}</h5>
-                <p>{{mine.stacksize}}</p>
-                <p>{{mine.description}}</p>
-                <a href="#" class="btn btn-dark">+ Info</a>
+                <h5 style="text-align: center;">{{mine.name}}</h5>
+                <br>
+                <h2 style="text-shadow: 12px;">{{mine.stacksize}}</h2>
+                <!-- <p>{{mine.description}}</p> -->
+                <div style="display:flex; justify-content:center;">
+  <a href="{{url_for('api', id=mine.namespacedId)}}" class="btn btn-dark">Detalhes do Bloco</a>
+</div>
              </div>
             </div>
          </div>
