@@ -2,6 +2,10 @@
     margin: 5px;
 }
 
+body{
+    background-color: #0A8949;
+}
+
 btn {
     text-align: center;
 

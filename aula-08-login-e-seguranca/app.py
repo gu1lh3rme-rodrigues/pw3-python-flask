@@ -4,6 +4,8 @@ from flask import Flask, render_template
 import pymysql
 # Importando as rotas que estão nos controllers
 from controllers import routes
+# Importando os models
+from models.database import db
 
 # Carregando o Flask na variável app
 app = Flask(__name__, template_folder='views')
@@ -12,12 +14,15 @@ app = Flask(__name__, template_folder='views')
 routes.init_app(app)
 
 # Define o nome do banco de dados
-DB_NAME = 'API'
+DB_NAME = 'thegames'
 # Configura o Flask com o banco definido
 app.config['DATABASE_NAME'] = DB_NAME
 
 # Passando o endereço do banco ao Flask
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://root@localhost/{DB_NAME}'
+
+#definindo um Segredo para as sessões do site
+app.config['SECRET_KEY'] = 'thegamessecret'
 
 # Iniciando o servidor no localhost, porta 5000, modo de depuração ativado
 if __name__ == '__main__':
@@ -41,5 +46,12 @@ if __name__ == '__main__':
     finally:
         connection.close()
 
+    # Passando o flask para SQLAlchemy
+    db.init_app(app=app)
+
+    # Criando as tabelas a partir do model
+    with app.test_request_context():
+        db.create_all()
+
     # Inicializando a aplicação Flask
-    app.run(host='0.0.0.0', port=4000, debug=True)
+    app.run(host='localhost', port=5000, debug=True)
